@@ -165,15 +165,6 @@ height: 100%;
 object-fit: cover;
 }
 
-.photo-item span {
-font-size: 0.55rem;
-color: #fff;
-text-shadow: 0 0 5px #ff4d88;
-text-align: center;
-padding: 2px;
-font-weight: bold;
-}
-
 .bouquet-base {
 position: absolute;
 bottom: 5px;
@@ -287,19 +278,19 @@ text-shadow: 0 0 8px #ff4d88;
 
 <div class="bouquet-area">
 <div class="photo-item p1" onclick="openLightbox(0)">
-<span>Photo 1</span>
+<img src="https://i.ibb.co/DSXNdck/IMG-7208.png" alt="Memory 1">
 </div>
 <div class="photo-item p2" onclick="openLightbox(1)">
-<span>Photo 2</span>
+<img src="https://i.ibb.co/Zzf9xfX1/IMG-7156.jpg" alt="Memory 2">
 </div>
 <div class="photo-item p3" onclick="openLightbox(2)">
-<span>Photo 3</span>
+<img src="https://i.ibb.co/V0tgjspR/IMG-7207.png" alt="Memory 3">
 </div>
 <div class="photo-item p4" onclick="openLightbox(3)">
-<span>Photo 4</span>
+<img src="https://i.ibb.co/LD3NkqDB/IMG-6902.jpg" alt="Memory 4">
 </div>
 <div class="photo-item p5" onclick="openLightbox(4)">
-<span>Photo 5</span>
+<img src="https://i.ibb.co/cz1ZjDr/IMG-6973.jpg" alt="Memory 5">
 </div>
 
 <div class="bouquet-base">💐</div>
@@ -340,7 +331,7 @@ alpha: Math.random()
 });
 }
 
-// Solar System Orbits & Planets (အရှိန်အလွန်မှန်ပြီး ငြိမ့်ညောင်းသော အမြန်နှုန်း)
+// Solar System Orbits & Planets
 const orbits = [
 { rx: 90, ry: 45, speed: 0.006, angle: Math.random() * Math.PI, size: 4, color: '#ff80bf' },
 { rx: 140, ry: 70, speed: 0.0048, angle: Math.random() * Math.PI, size: 6, color: '#ffb3c6' },
@@ -351,7 +342,7 @@ const orbits = [
 { rx: 530, ry: 265, speed: 0.001, angle: Math.random() * Math.PI, size: 10, color: '#33ccff' }
 ];
 
-// Realistic 3D Fireworks (ပန်းရောင်၊ အနီရောင်၊ အဖြူရောင် တဖျပ်ဖျပ်လက်ပြီး ခပ်နှေးနှေးဖြာထွက်မည့် ပုံစံ)
+// Realistic 3D Fireworks
 let fireworks = [];
 
 class Firework3D {
@@ -359,11 +350,10 @@ constructor() {
 this.x = Math.random() * (canvas.width * 0.8) + (canvas.width * 0.1);
 this.y = canvas.height + 10;
 this.targetY = Math.random() * (canvas.height * 0.45) + (canvas.height * 0.1);
-this.speed = Math.random() * 1.2 + 1.2; // ပုံမှန်ခပ်နှေးနှေး တက်မည်
+this.speed = Math.random() * 1.2 + 1.2;
 this.particles = [];
 this.exploded = false;
 
-// ပုံထဲကအတိုင်း ပန်းရောင်၊ အနီရောင်၊ ပန်းနုရောင် တောက်ပသော အရောင်များ
 const colorPalettes = [
 '#ff3385', '#ff4d94', '#ff80b3', '#ff1a75', '#ff99bb', '#ffffff', '#ffb3d1'
 ];
@@ -375,11 +365,10 @@ if (!this.exploded) {
 this.y -= this.speed;
 if (this.y <= this.targetY) {
 this.exploded = true;
-// 3D Spherical explosion with smooth slow speed
 for (let i = 0; i < 70; i++) {
 const theta = Math.random() * Math.PI * 2;
 const phi = Math.acos((Math.random() * 2) - 1);
-const speed = Math.random() * 2.2 + 0.6; // ပုံမှန်ခပ်နှေးနှေး ဖြာထွက်မည်
+const speed = Math.random() * 2.2 + 0.6;
 this.particles.push({
 x: this.x,
 y: this.y,
@@ -387,7 +376,7 @@ vx: Math.sin(phi) * Math.cos(theta) * speed,
 vy: Math.sin(phi) * Math.sin(theta) * speed,
 vz: Math.cos(phi) * speed,
 alpha: 1,
-decay: Math.random() * 0.008 + 0.006, // ဖြည်းဖြည်းချင်းမှိန်သွားမည်
+decay: Math.random() * 0.008 + 0.006,
 color: Math.random() > 0.3 ? this.color : '#ffffff'
 });
 }
@@ -396,7 +385,7 @@ color: Math.random() > 0.3 ? this.color : '#ffffff'
 this.particles.forEach(p => {
 p.x += p.vx;
 p.y += p.vy;
-p.vy += 0.025; // သဘာဝကျသော ဆွဲငင်အား (Gravity)
+p.vy += 0.025;
 p.alpha -= p.decay;
 });
 this.particles = this.particles.filter(p => p.alpha > 0);
@@ -522,7 +511,6 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
 
-// 1. Draw Twinkling Stars
 spaceStars.forEach(star => {
 star.alpha += (Math.random() - 0.5) * 0.06;
 if (star.alpha < 0.1) star.alpha = 0.1;
@@ -534,7 +522,6 @@ ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
 ctx.fill();
 });
 
-// 2. Draw Realistic 3D Fireworks (ပုံမှန်ခပ်နှေးနှေး လှပစွာဖောက်မည်)
 if (Math.random() < 0.025) {
 fireworks.push(new Firework3D());
 }
@@ -546,7 +533,6 @@ fireworks.splice(index, 1);
 }
 });
 
-// 3. Draw Sun in the Center
 const sunGlow = ctx.createRadialGradient(centerX, centerY, 5, centerX, centerY, 60);
 sunGlow.addColorStop(0, '#ffffff');
 sunGlow.addColorStop(0.3, '#ffcc00');
@@ -558,7 +544,6 @@ ctx.beginPath();
 ctx.arc(centerX, centerY, 50, 0, Math.PI * 2);
 ctx.fill();
 
-// 4. Draw Orbits & Planets (ငြိမ့်ညောင်းသော အရှိန်)
 orbits.forEach(orbit => {
 ctx.strokeStyle = 'rgba(255, 179, 198, 0.15)';
 ctx.lineWidth = 1;
@@ -587,7 +572,6 @@ ctx.stroke();
 ctx.shadowBlur = 0;
 });
 
-// 5. Update and Draw Emoji Bubu & Dudu Characters
 updateBubuDudu();
 drawEmojiCharacter(bubu, "🐼", "BUBU");
 drawEmojiCharacter(dudu, "🐻", "DUDU");
@@ -656,11 +640,6 @@ const lightboxWish = document.getElementById('lightbox-wish');
 if (img) {
 lightboxImg.src = img.src;
 lightboxWish.innerHTML = photoWishes[index];
-lightbox.style.display = 'flex';
-} else {
-lightboxImg.src = "";
-lightboxImg.alt = "Your Photo " + (index + 1) + " (Placeholder)";
-lightboxWish.innerHTML = photoWishes[index] + "<br><br><span style='color:#ffb3c6; font-size:0.8rem;'>(Please add your photo src to display image)</span>";
 lightbox.style.display = 'flex';
 }
 }
