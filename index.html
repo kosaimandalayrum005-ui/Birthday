@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Solar System & Realistic 3D Fireworks Birthday Surprise</title>
+<title>Ultimate 3D Solar System & Interactive Birthday Surprise</title>
 <style>
 * {
 margin: 0;
@@ -66,24 +66,39 @@ to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
-font-size: clamp(2.5rem, 8vw, 4rem);
-color: #ffb3c6;
-text-shadow: 0 0 15px #ff4d88, 0 0 30px #ff1a75;
+font-size: clamp(2.2rem, 7vw, 3.5rem);
+color: #ffffff;
+text-shadow: 0 0 10px #ff4d88, 0 0 20px #ff1a75, 0 0 30px #ff0066;
 letter-spacing: 2px;
 padding: 0 10px;
 text-align: center;
+font-weight: 900;
+}
+
+.hbd-word {
+display: inline-block;
+opacity: 0;
+transform: translateY(20px) scale(0.8);
+transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+margin: 0 8px;
+}
+
+.hbd-word.show-word {
+opacity: 1;
+transform: translateY(0) scale(1);
+text-shadow: 0 0 15px #ff4d88, 0 0 30px #ff1a75, 0 0 45px #ff0066;
 }
 
 .start-btn {
-background: rgba(255, 77, 136, 0.15);
+background: rgba(255, 77, 136, 0.2);
 backdrop-filter: blur(8px);
 border: 2px solid #ff4d88;
-color: #ffb3c6;
+color: #ffffff;
 padding: 15px 35px;
 font-size: 1.5rem;
 cursor: pointer;
-text-shadow: 0 0 10px #ff4d88;
-box-shadow: 0 0 20px rgba(255, 77, 136, 0.4);
+text-shadow: 0 0 10px #ff4d88, 0 0 20px #ff1a75;
+box-shadow: 0 0 25px rgba(255, 77, 136, 0.5);
 border-radius: 50px;
 transition: 0.3s;
 font-weight: bold;
@@ -93,7 +108,7 @@ letter-spacing: 1px;
 .start-btn:hover {
 background: #ff4d88;
 color: #fff;
-box-shadow: 0 0 30px #ff4d88, 0 0 60px #ff4d88;
+box-shadow: 0 0 35px #ff4d88, 0 0 70px #ff1a75;
 transform: scale(1.05);
 }
 
@@ -113,33 +128,50 @@ align-items: center;
 }
 
 .bouquet-title {
-font-size: 1.1rem;
-color: #ffb3c6;
-text-shadow: 0 0 8px #ff4d88;
-margin-bottom: 10px;
+font-size: 1.05rem;
+color: #ffffff;
+text-shadow: 0 0 10px #ff4d88, 0 0 20px #ff1a75;
+margin-top: -5px;
+margin-bottom: 12px;
 letter-spacing: 1px;
+font-weight: bold;
 }
 
 .bouquet-area {
 position: relative;
 width: 100%;
-height: 200px;
-margin-bottom: 10px;
+height: 180px;
+margin-bottom: 8px;
 display: flex;
 justify-content: center;
 align-items: center;
+}
+
+.bouquet-display-anim {
+font-size: 90px;
+animation: bouquetPop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+filter: drop-shadow(0 0 20px #ff4d88);
+position: absolute;
+bottom: 5px;
+z-index: 2;
+}
+
+@keyframes bouquetPop {
+0% { transform: scale(0); opacity: 0; }
+80% { transform: scale(1.15); }
+100% { transform: scale(1); opacity: 1; }
 }
 
 .photo-item {
 position: absolute;
 width: 65px;
 height: 65px;
-border: 2px solid #ffb3c6;
+border: 2px solid #ffffff;
 border-radius: 8px;
 background: rgba(255, 255, 255, 0.15);
 backdrop-filter: blur(4px);
 overflow: hidden;
-box-shadow: 0 0 12px #ff4d88;
+box-shadow: 0 0 15px #ff4d88, 0 0 25px #ff1a75;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -149,15 +181,13 @@ transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 cursor: pointer;
 }
 
-.photo-item.show {
-opacity: 1;
-}
+.photo-item.show { opacity: 1; }
 
-.p1.show { transform: translate(-110px, -60px) rotate(-15deg) scale(1); }
-.p2.show { transform: translate(-55px, -95px) rotate(-8deg) scale(1); }
-.p3.show { transform: translate(0px, -110px) rotate(0deg) scale(1); }
-.p4.show { transform: translate(55px, -95px) rotate(8deg) scale(1); }
-.p5.show { transform: translate(110px, -60px) rotate(15deg) scale(1); }
+.p1.show { transform: translate(-110px, -55px) rotate(-15deg) scale(1); }
+.p2.show { transform: translate(-55px, -90px) rotate(-8deg) scale(1); }
+.p3.show { transform: translate(0px, -105px) rotate(0deg) scale(1); }
+.p4.show { transform: translate(55px, -90px) rotate(8deg) scale(1); }
+.p5.show { transform: translate(110px, -55px) rotate(15deg) scale(1); }
 
 .photo-item img {
 width: 100%;
@@ -165,32 +195,295 @@ height: 100%;
 object-fit: cover;
 }
 
-.bouquet-base {
-position: absolute;
-bottom: 5px;
-font-size: 40px;
-text-shadow: 0 0 15px #ff1a75;
-z-index: 2;
-}
-
 .wish-box {
-font-size: 0.9rem;
+font-size: 0.85rem;
 line-height: 1.4;
-color: #fff;
-text-shadow: 0 0 6px #ff4d88;
-background: rgba(25, 5, 15, 0.55);
+color: #ffffff;
+text-shadow: 0 0 8px #ff4d88, 0 0 15px #ff1a75;
+background: rgba(25, 5, 15, 0.65);
 backdrop-filter: blur(10px);
 -webkit-backdrop-filter: blur(10px);
 border: 1px dashed rgba(255, 77, 136, 0.9);
-padding: 10px 12px;
+padding: 8px 10px;
 border-radius: 10px;
 width: 100%;
-min-height: 65px;
+min-height: 60px;
 display: flex;
 align-items: center;
 justify-content: center;
 text-align: center;
-box-shadow: 0 0 15px rgba(255, 77, 136, 0.2);
+box-shadow: 0 0 20px rgba(255, 77, 136, 0.3);
+margin-bottom: 12px;
+font-weight: bold;
+}
+
+.nav-buttons {
+display: flex;
+gap: 12px;
+width: 100%;
+justify-content: center;
+}
+
+.next-btn {
+background: linear-gradient(135deg, rgba(255, 77, 136, 0.25), rgba(255, 26, 117, 0.45));
+backdrop-filter: blur(8px);
+border: 2px solid #ff4d88;
+color: #ffffff;
+padding: 10px 20px;
+font-size: 0.9rem;
+cursor: pointer;
+text-shadow: 0 0 8px #ff4d88, 0 0 15px #ff1a75;
+box-shadow: 0 0 15px rgba(255, 77, 136, 0.4);
+border-radius: 25px;
+transition: 0.3s;
+font-weight: bold;
+letter-spacing: 1px;
+width: 130px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 6px;
+}
+
+.next-btn:hover {
+background: #ff4d88;
+color: #ffffff;
+box-shadow: 0 0 25px #ff4d88, 0 0 50px #ff1a75;
+transform: scale(1.05);
+}
+
+.third-card {
+background: transparent;
+backdrop-filter: none;
+-webkit-backdrop-filter: none;
+border: 2px solid rgba(255, 77, 136, 0.9);
+padding: 18px;
+border-radius: 20px;
+box-shadow: 0 0 35px rgba(255, 77, 136, 0.5), inset 0 0 15px rgba(255, 77, 136, 0.2);
+width: 100%;
+max-width: 400px;
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.cake-container {
+position: relative;
+width: 220px;
+height: 180px;
+margin: 10px auto;
+display: flex;
+justify-content: center;
+align-items: flex-end;
+opacity: 0;
+transform: translateY(-250px) scale(0.4) rotateX(45deg);
+transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cake-container.show-cake {
+opacity: 1;
+transform: translateY(0) scale(1) rotateX(0deg);
+}
+
+.cake-tier-3 {
+position: absolute;
+bottom: 0;
+width: 180px;
+height: 50px;
+background: linear-gradient(135deg, #ff6699, #ff1a75);
+border-radius: 10px 10px 15px 15px;
+box-shadow: 0 0 15px #ff4d88;
+border: 2px solid #ffffff;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.cake-tier-2 {
+position: absolute;
+bottom: 50px;
+width: 140px;
+height: 45px;
+background: linear-gradient(135deg, #ff99bb, #ff4d88);
+border-radius: 10px 10px 10px 10px;
+box-shadow: 0 0 15px #ff1a75;
+border: 2px solid #ffffff;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.cake-tier-1 {
+position: absolute;
+bottom: 95px;
+width: 100px;
+height: 40px;
+background: linear-gradient(135deg, #ffffff, #ffb3c6);
+border-radius: 15px 15px 5px 5px;
+box-shadow: 0 0 15px #ff6699;
+border: 2px solid #ff4d88;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding-top: 2px;
+}
+
+.cake-cherry-top {
+font-size: 1.1rem;
+line-height: 1;
+filter: drop-shadow(0 0 3px rgba(0,0,0,0.4));
+margin-bottom: 2px;
+}
+
+.cake-text-name {
+font-size: 0.88rem;
+color: #ff0055;
+font-weight: 900;
+text-shadow: 0 0 4px #ffb3c6;
+letter-spacing: 0.5px;
+line-height: 1.1;
+text-align: center;
+}
+
+.cake-text-date {
+font-size: 0.85rem;
+color: #ffffff;
+font-weight: 900;
+text-shadow: 0 0 6px #ff1a75;
+letter-spacing: 0.5px;
+line-height: 1.1;
+}
+
+.candles-area {
+position: absolute;
+bottom: 135px;
+width: 80px;
+display: flex;
+justify-content: space-around;
+z-index: 5;
+}
+
+.candle {
+width: 8px;
+height: 32px;
+background: repeating-linear-gradient(45deg, #ff1a75, #ff1a75 4px, #fff 4px, #fff 8px);
+border-radius: 3px;
+position: relative;
+opacity: 0;
+transform: translateY(-100px) scale(0.5);
+transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.candle.planted {
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+
+.flame {
+position: absolute;
+top: -15px;
+left: 50%;
+transform: translateX(-50%);
+width: 9px;
+height: 15px;
+background: radial-gradient(circle, #ffff66 0%, #ff9900 60%, #ff3300 100%);
+border-radius: 50% 50% 20% 20%;
+box-shadow: 0 0 10px #ffcc00, 0 0 20px #ff3300;
+animation: flicker 0.3s infinite alternate;
+transition: all 0.5s ease;
+}
+
+.flame.extinguished {
+transform: translateX(-50%) scale(0) !important;
+opacity: 0 !important;
+}
+
+.smoke {
+position: absolute;
+top: -30px;
+left: 50%;
+width: 12px;
+height: 35px;
+background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+border-radius: 50%;
+transform: translateX(-50%) scale(0);
+filter: blur(3px);
+pointer-events: none;
+z-index: 10;
+}
+
+.candle.planted .smoke.smoke-animate {
+animation: riseSmoke 1.2s ease-out forwards;
+}
+
+@keyframes riseSmoke {
+0% { transform: translateX(-50%) translateY(0) scale(0.3); opacity: 1; }
+50% { transform: translateX(-50%) translateY(-25px) scale(1.2) rotate(15deg); opacity: 0.6; }
+100% { transform: translateX(-50%) translateY(-50px) scale(2) rotate(-15deg); opacity: 0; }
+}
+
+@keyframes flicker {
+0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+100% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+}
+
+.wind-stream {
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%) scaleY(0.2);
+width: 16px;
+height: 110px;
+background: linear-gradient(to top, transparent, rgba(255,255,255,0.6), rgba(255,255,255,0.95), #ffffff);
+border-radius: 8px;
+opacity: 0;
+box-shadow: 0 0 25px #ffffff, 0 0 12px #ff4d88;
+z-index: 20;
+filter: blur(1px);
+pointer-events: none;
+}
+
+.wind-animate {
+animation: blowWindBottomToTop 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes blowWindBottomToTop {
+0% { transform: translateX(-50%) translateY(20px) scaleY(0.2); opacity: 0; }
+30% { opacity: 1; }
+80% { opacity: 1; transform: translateX(-50%) translateY(-120px) scaleY(1.3); }
+100% { transform: translateX(-50%) translateY(-145px) scaleY(0.4); opacity: 0; }
+}
+
+.icon-blow-btn {
+background: radial-gradient(circle, rgba(255, 77, 136, 0.3) 0%, rgba(255, 26, 117, 0.5) 100%);
+backdrop-filter: blur(8px);
+border: 2px solid #ffffff;
+color: #fff;
+width: 75px;
+height: 75px;
+font-size: 2.2rem;
+cursor: pointer;
+box-shadow: 0 0 25px #ff4d88, 0 0 50px #ff1a75, inset 0 0 15px rgba(255, 255, 255, 0.6);
+border-radius: 50%;
+transition: 0.3s;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 12px auto;
+animation: pulseBtn 1.5s infinite;
+}
+
+@keyframes pulseBtn {
+0% { transform: scale(1); box-shadow: 0 0 20px #ff4d88, 0 0 40px #ff1a75; }
+50% { transform: scale(1.12); box-shadow: 0 0 35px #ff4d88, 0 0 70px #ff1a75; }
+100% { transform: scale(1); box-shadow: 0 0 20px #ff4d88, 0 0 40px #ff1a75; }
+}
+
+.icon-blow-btn:hover {
+transform: scale(1.18);
+background: radial-gradient(circle, rgba(255, 102, 153, 0.5) 0%, rgba(255, 51, 133, 0.7) 100%);
 }
 
 #lightbox {
@@ -234,9 +527,10 @@ box-shadow: 0 0 15px #ff4d88;
 
 .lightbox-wish {
 font-size: 0.95rem;
-color: #fff;
-text-shadow: 0 0 5px #ff4d88;
+color: #ffffff;
+text-shadow: 0 0 8px #ff4d88, 0 0 15px #ff1a75;
 line-height: 1.4;
+font-weight: bold;
 }
 
 .lightbox-close {
@@ -244,12 +538,16 @@ color: #ffb3c6;
 margin-top: 15px;
 font-size: 0.9rem;
 text-shadow: 0 0 8px #ff4d88;
+cursor: pointer;
 }
 </style>
 </head>
 <body>
 
 <canvas id="bgCanvas"></canvas>
+
+<audio id="bgMusic" src="https://files.catbox.moe/90w14l.mp3" loop></audio>
+<audio id="hbdAudio" src="https://files.catbox.moe/xb7l5b.mp3"></audio>
 
 <div id="lightbox" onclick="closeLightbox()">
 <div class="lightbox-card" onclick="event.stopPropagation()">
@@ -260,6 +558,7 @@ text-shadow: 0 0 8px #ff4d88;
 </div>
 
 <div class="container">
+<!-- Screen 1 - Start Screen -->
 <div id="screen-start" class="screen active">
 <button class="start-btn" onclick="startIntro()">CLICK TO START ♥</button>
 </div>
@@ -268,42 +567,196 @@ text-shadow: 0 0 8px #ff4d88;
 <div id="screen-2" class="screen"><h1>2</h1></div>
 <div id="screen-1" class="screen"><h1>1</h1></div>
 
-<div id="screen-happy" class="screen"><h1>HAPPY</h1></div>
-<div id="screen-bday" class="screen"><h1>BIRTHDAY</h1></div>
-<div id="screen-toyou" class="screen"><h1>TO YOU</h1></div>
+<!-- Screen HBD -->
+<div id="screen-hbd" class="screen">
+<h1>
+<span class="hbd-word" id="w1">HAPPY</span>
+<span class="hbd-word" id="w2">BIRTHDAY</span>
+</h1>
+</div>
 
+<!-- Screen 2 - Bouquet Screen -->
 <div id="screen-bouquet" class="screen">
 <div class="bouquet-card">
 <div class="bouquet-title">SPECIAL MEMORIES FOR YOU</div>
 
 <div class="bouquet-area">
-<div class="photo-item p1" onclick="openLightbox(0)">
-<img src="https://i.ibb.co/DSXNdck/IMG-7208.png" alt="Memory 1">
-</div>
-<div class="photo-item p2" onclick="openLightbox(1)">
-<img src="https://i.ibb.co/Zzf9xfX1/IMG-7156.jpg" alt="Memory 2">
-</div>
-<div class="photo-item p3" onclick="openLightbox(2)">
-<img src="https://i.ibb.co/V0tgjspR/IMG-7207.png" alt="Memory 3">
-</div>
-<div class="photo-item p4" onclick="openLightbox(3)">
-<img src="https://i.ibb.co/LD3NkqDB/IMG-6902.jpg" alt="Memory 4">
-</div>
-<div class="photo-item p5" onclick="openLightbox(4)">
-<img src="https://i.ibb.co/cz1ZjDr/IMG-6973.jpg" alt="Memory 5">
-</div>
+<div class="photo-item p1" onclick="openLightbox(0)"><img src="https://i.ibb.co/DSXNdck/IMG-7208.png" alt="Memory 1"></div>
+<div class="photo-item p2" onclick="openLightbox(1)"><img src="https://i.ibb.co/Zzf9xfX1/IMG-7156.jpg" alt="Memory 2"></div>
+<div class="photo-item p3" onclick="openLightbox(2)"><img src="https://i.ibb.co/V0tgjspR/IMG-7207.png" alt="Memory 3"></div>
+<div class="photo-item p4" onclick="openLightbox(3)"><img src="https://i.ibb.co/LD3NkqDB/IMG-6902.jpg" alt="Memory 4"></div>
+<div class="photo-item p5" onclick="openLightbox(4)"><img src="https://i.ibb.co/cz1ZjDr/IMG-6973.jpg" alt="Memory 5"></div>
 
-<div class="bouquet-base">💐</div>
+<div class="bouquet-display-anim">💐</div>
 </div>
 
 <div id="main-wish-box" class="wish-box">
 "Tap on each blooming flower photo to reveal special moments & wishes! ✨🎂"
+</div>
+
+<div class="nav-buttons">
+<button class="next-btn" onclick="goToThirdScreen()">NEXT ➔</button>
+</div>
+</div>
+</div>
+
+<!-- Screen 3 - Birthday Cake & Candle Screen -->
+<div id="screen-third" class="screen">
+<div class="third-card">
+<h2 style="font-size: 1.1rem; color: #ffffff; text-shadow: 0 0 10px #ff4d88, 0 0 20px #ff1a75; margin-bottom: 5px; font-weight: bold;">MAKE A WISH! 🎂</h2>
+<div class="cake-container" id="cakeContainer">
+<div class="cake-tier-3">
+<div class="cake-text-date">February 17</div>
+</div>
+<div class="cake-tier-2">
+<div class="cake-text-name">May Phyu Zin</div>
+</div>
+<div class="cake-tier-1">
+<div class="cake-cherry-top">🍒</div>
+</div>
+<div class="candles-area" id="candlesArea">
+<div class="candle"><div class="flame" id="f1"></div><div class="smoke"></div></div>
+<div class="candle"><div class="flame" id="f2"></div><div class="smoke"></div></div>
+<div class="candle"><div class="flame" id="f3"></div><div class="smoke"></div></div>
+</div>
+<div class="wind-stream" id="windStream"></div>
+</div>
+<p id="cakeText" style="font-size:0.75rem; margin:6px 0; color:#ffffff; text-shadow:0 0 8px #ff4d88; font-weight: bold;">Building the birthday cake... ✨</p>
+<button class="icon-blow-btn" id="blowBtn" onclick="blowCandles()" style="display:none;" title="Blow Candles">💨</button>
+
+<div class="nav-buttons" style="margin-top: 5px;">
+<button class="next-btn" onclick="goToBouquetScreen()">◄ BACK</button>
+<button class="next-btn" onclick="goToNextPage()">NEXT ➔</button>
 </div>
 </div>
 </div>
 </div>
 
 <script>
+let audioCtx = null;
+
+function initAudio() {
+if (!audioCtx) {
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+if (audioCtx.state === 'suspended') {
+audioCtx.resume();
+}
+}
+
+function playCodeTypingSound() {
+try {
+initAudio();
+if (!audioCtx) return;
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+let now = audioCtx.currentTime;
+
+osc.type = 'triangle';
+let freq = 800 + Math.random() * 1200;
+osc.frequency.setValueAtTime(freq, now);
+osc.frequency.exponentialRampToValueAtTime(freq + 300, now + 0.05);
+
+gain.gain.setValueAtTime(0.08, now);
+gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+
+osc.start(now);
+osc.stop(now + 0.05);
+} catch(e) {}
+}
+
+function playSound(type) {
+try {
+initAudio();
+if (!audioCtx) return;
+let osc = audioCtx.createOscillator();
+let gain = audioCtx.createGain();
+osc.connect(gain);
+gain.connect(audioCtx.destination);
+let now = audioCtx.currentTime;
+
+if (type === 'click') {
+osc.type = 'sine';
+osc.frequency.setValueAtTime(600, now);
+osc.frequency.exponentialRampToValueAtTime(900, now + 0.12);
+gain.gain.setValueAtTime(0.3, now);
+gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+osc.start(now);
+osc.stop(now + 0.12);
+} else if (type === 'beep') {
+osc.type = 'sine';
+osc.frequency.setValueAtTime(440, now);
+osc.frequency.exponentialRampToValueAtTime(880, now + 0.2);
+gain.gain.setValueAtTime(0.4, now);
+gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+osc.start(now);
+osc.stop(now + 0.2);
+} else if (type === 'blow') {
+let bufferSize = audioCtx.sampleRate * 1.8;
+let buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+let data = buffer.getChannelData(0);
+for (let i = 0; i < bufferSize; i++) {
+data[i] = Math.random() * 2 - 1;
+}
+let noise = audioCtx.createBufferSource();
+noise.buffer = buffer;
+let filter = audioCtx.createBiquadFilter();
+filter.type = 'bandpass';
+filter.frequency.value = 400;
+noise.connect(filter);
+filter.connect(gain);
+gain.gain.setValueAtTime(0.01, now);
+gain.gain.linearRampToValueAtTime(0.4, now + 0.3);
+gain.gain.exponentialRampToValueAtTime(0.01, now + 1.8);
+noise.start(now);
+} else if (type === 'fireworks-frenzy') {
+// မီးရှုးပန်းအရေအတွက် လျှော့ချထားပြီး ၁.၅ စက္ကန့်အတွင်း မြန်မြန်ဖောက်ကာ မြန်မြန်ပြန်ရုတ်သိမ်းရန် တိုတောင်းသောကြာချိန် (1.5 seconds) ဖြင့် ပြင်ဆင်ထားသည်
+let bufferSize = audioCtx.sampleRate * 1.5;
+let buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+let data = buffer.getChannelData(0);
+for (let i = 0; i < bufferSize; i++) {
+let val = Math.random() * 2 - 1;
+if (Math.random() < 0.05) { val *= 3; }
+data[i] = val;
+}
+let noise = audioCtx.createBufferSource();
+noise.buffer = buffer;
+let filter = audioCtx.createBiquadFilter();
+filter.type = 'lowpass';
+filter.frequency.setValueAtTime(800, now);
+filter.frequency.linearRampToValueAtTime(300, now + 1.5);
+noise.connect(filter);
+filter.connect(gain);
+gain.gain.setValueAtTime(0.5, now);
+gain.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
+noise.start(now);
+} else if (type === 'balloon') {
+osc.type = 'sine';
+osc.frequency.setValueAtTime(200, now);
+osc.frequency.exponentialRampToValueAtTime(600, now + 0.25);
+gain.gain.setValueAtTime(0.3, now);
+gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+osc.start(now);
+osc.stop(now + 0.25);
+}
+} catch(e) {}
+}
+
+function speakText(text, callback) {
+if ('speechSynthesis' in window) {
+window.speechSynthesis.cancel();
+let utterance = new SpeechSynthesisUtterance(text);
+utterance.rate = 1.0;
+utterance.pitch = 1.2;
+utterance.onend = () => { if (callback) callback(); };
+window.speechSynthesis.speak(utterance);
+} else {
+if (callback) callback();
+}
+}
+
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -311,8 +764,6 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let currentMode = 'matrix';
-
-// Matrix variables
 const characters = "LOVE♥HBD1234567890HAPPYBIRTHDAY";
 const fontSize = 16;
 const columns = canvas.width / fontSize;
@@ -320,7 +771,6 @@ const drops = [];
 for (let i = 0; i < columns; i++) { drops[i] = 1; }
 let matrixCounter = 0;
 
-// Background Space Stars
 const spaceStars = [];
 for (let i = 0; i < 300; i++) {
 spaceStars.push({
@@ -331,7 +781,6 @@ alpha: Math.random()
 });
 }
 
-// Solar System Orbits & Planets
 const orbits = [
 { rx: 90, ry: 45, speed: 0.006, angle: Math.random() * Math.PI, size: 4, color: '#ff80bf' },
 { rx: 140, ry: 70, speed: 0.0048, angle: Math.random() * Math.PI, size: 6, color: '#ffb3c6' },
@@ -342,145 +791,126 @@ const orbits = [
 { rx: 530, ry: 265, speed: 0.001, angle: Math.random() * Math.PI, size: 10, color: '#33ccff' }
 ];
 
-// Realistic 3D Fireworks
 let fireworks = [];
+let balloons = [];
+let heavyFireworksActive = false;
 
 class Firework3D {
-constructor() {
+constructor(isHeavy = false) {
 this.x = Math.random() * (canvas.width * 0.8) + (canvas.width * 0.1);
 this.y = canvas.height + 10;
-this.targetY = Math.random() * (canvas.height * 0.45) + (canvas.height * 0.1);
-this.speed = Math.random() * 1.2 + 1.2;
+this.targetY = Math.random() * (canvas.height * 0.5) + (canvas.height * 0.05);
+this.speed = isHeavy ? (Math.random() * 2.5 + 2.0) : (Math.random() * 1.2 + 1.2);
 this.particles = [];
 this.exploded = false;
-
-const colorPalettes = [
-'#ff3385', '#ff4d94', '#ff80b3', '#ff1a75', '#ff99bb', '#ffffff', '#ffb3d1'
-];
+this.isHeavy = isHeavy;
+const colorPalettes = ['#ff3385', '#ff4d94', '#ff80b3', '#ff1a75', '#ff99bb', '#ffffff', '#ffb3d1', '#ffff66', '#33ccff'];
 this.color = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
 }
-
 update() {
 if (!this.exploded) {
 this.y -= this.speed;
 if (this.y <= this.targetY) {
 this.exploded = true;
-for (let i = 0; i < 70; i++) {
+// မီးရှုးပန်း အရေအတွက်ကို သိသိသာသာ လျှော့ချထားသည် (Heavy: 35, Normal: 20)
+let count = this.isHeavy ? 35 : 20;
+for (let i = 0; i < count; i++) {
 const theta = Math.random() * Math.PI * 2;
 const phi = Math.acos((Math.random() * 2) - 1);
-const speed = Math.random() * 2.2 + 0.6;
+const speed = this.isHeavy ? (Math.random() * 4.0 + 1.0) : (Math.random() * 2.2 + 0.6);
 this.particles.push({
-x: this.x,
-y: this.y,
+x: this.x, y: this.y,
 vx: Math.sin(phi) * Math.cos(theta) * speed,
 vy: Math.sin(phi) * Math.sin(theta) * speed,
 vz: Math.cos(phi) * speed,
 alpha: 1,
-decay: Math.random() * 0.008 + 0.006,
-color: Math.random() > 0.3 ? this.color : '#ffffff'
+// မြန်မြန်ပျောက်ကွယ်ရန် decay တန်ဖိုးကို မြှင့်တင်ထားသည် (လျင်မြန်စွာ ရုတ်သိမ်းရန်)
+decay: this.isHeavy ? (Math.random() * 0.04 + 0.02) : (Math.random() * 0.05 + 0.03),
+color: Math.random() > 0.2 ? this.color : '#ffffff'
 });
 }
 }
 } else {
 this.particles.forEach(p => {
-p.x += p.vx;
-p.y += p.vy;
-p.vy += 0.025;
-p.alpha -= p.decay;
+p.x += p.vx; p.y += p.vy; p.vy += 0.025; p.alpha -= p.decay;
 });
 this.particles = this.particles.filter(p => p.alpha > 0);
 }
 }
-
 draw() {
 if (!this.exploded) {
-ctx.save();
-ctx.fillStyle = this.color;
-ctx.shadowBlur = 10;
-ctx.shadowColor = this.color;
-ctx.beginPath();
-ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-ctx.fill();
-ctx.restore();
+ctx.save(); ctx.fillStyle = this.color; ctx.shadowBlur = 12; ctx.shadowColor = this.color;
+ctx.beginPath(); ctx.arc(this.x, this.y, this.isHeavy ? 3.5 : 2, 0, Math.PI * 2); ctx.fill(); ctx.restore();
 } else {
 this.particles.forEach(p => {
-let scale3d = (p.vz + 4) / 4;
-if (scale3d < 0.2) scale3d = 0.2;
-
-ctx.save();
-ctx.globalAlpha = p.alpha;
-ctx.fillStyle = p.color;
-ctx.shadowBlur = 10;
-ctx.shadowColor = p.color;
-ctx.beginPath();
-ctx.arc(p.x, p.y, 2.2 * scale3d, 0, Math.PI * 2);
-ctx.fill();
-ctx.restore();
+let scale3d = (p.vz + 4) / 4; if (scale3d < 0.2) scale3d = 0.2;
+ctx.save(); ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color; ctx.shadowBlur = 12; ctx.shadowColor = p.color;
+ctx.beginPath(); ctx.arc(p.x, p.y, (this.isHeavy ? 3.0 : 2.2) * scale3d, 0, Math.PI * 2); ctx.fill(); ctx.restore();
 });
 }
 }
 }
 
-// Emoji Bubu & Dudu wandering characters
-let bubu = {
-x: canvas.width * 0.25,
-y: canvas.height * 0.75,
-vx: 0.6,
-vy: 0.35,
-scaleZ: 1,
-zAngle: 0
-};
-
-let dudu = {
-x: canvas.width * 0.75,
-y: canvas.height * 0.75,
-vx: -0.5,
-vy: -0.4,
-scaleZ: 1,
-zAngle: 0
-};
-
-function updateBubuDudu() {
-bubu.x += bubu.vx;
-bubu.y += bubu.vy;
-bubu.zAngle += 0.025;
-bubu.scaleZ = 1 + Math.sin(bubu.zAngle) * 0.12;
-
-if (bubu.x < 40 || bubu.x > canvas.width - 40) bubu.vx *= -1;
-if (bubu.y < 70 || bubu.y > canvas.height - 70) bubu.vy *= -1;
-
-dudu.x += dudu.vx;
-dudu.y += dudu.vy;
-dudu.zAngle += 0.035;
-dudu.scaleZ = 1 + Math.cos(dudu.zAngle) * 0.12;
-
-if (dudu.x < 40 || dudu.x > canvas.width - 40) dudu.vx *= -1;
-if (dudu.y < 70 || dudu.y > canvas.height - 70) dudu.vy *= -1;
+class Balloon {
+constructor() {
+this.x = Math.random() * canvas.width;
+this.y = canvas.height + 30;
+this.speed = Math.random() * 1.5 + 1;
+this.size = Math.random() * 15 + 20;
+this.symbol = ['🎈', '💖', '🎁', '⭐', '🎂'][Math.floor(Math.random() * 5)];
+this.amplitude = Math.random() * 20 + 10;
+this.frequency = Math.random() * 0.02 + 0.01;
+this.angle = Math.random() * Math.PI * 2;
 }
-
-function drawEmojiCharacter(char, emoji, name) {
+update() {
+this.y -= this.speed;
+this.angle += this.frequency;
+this.currentX = this.x + Math.sin(this.angle) * this.amplitude;
+}
+draw() {
 ctx.save();
-ctx.translate(char.x, char.y);
-ctx.scale(char.scaleZ, char.scaleZ);
-
-ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
-ctx.beginPath();
-ctx.ellipse(0, 22, 18, 7, 0, 0, Math.PI * 2);
-ctx.fill();
-
-ctx.font = '34px sans-serif';
+ctx.font = this.size + 'px sans-serif';
 ctx.textAlign = 'center';
 ctx.textBaseline = 'middle';
-ctx.shadowBlur = 12;
+ctx.shadowBlur = 10;
 ctx.shadowColor = '#ff4d88';
+ctx.fillText(this.symbol, this.currentX, this.y);
+ctx.restore();
+}
+}
+
+let companionAngle = 0;
+
+function drawCompanionCharacters() {
+companionAngle += 0.005;
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+const orbitRx = 380;
+const orbitRy = 190;
+
+const bx = centerX + Math.cos(companionAngle) * orbitRx;
+const by = centerY + Math.sin(companionAngle) * orbitRy;
+
+const dx = centerX + Math.cos(companionAngle + 0.15) * orbitRx;
+const dy = centerY + Math.sin(companionAngle + 0.15) * orbitRy;
+
+drawSingleEmoji(bx, by, "🐼", "BUBU");
+drawSingleEmoji(dx, dy, "🐻", "DUDU");
+}
+
+function drawSingleEmoji(x, y, emoji, name) {
+ctx.save();
+ctx.translate(x, y);
+ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+ctx.beginPath(); ctx.ellipse(0, 25, 20, 8, 0, 0, Math.PI * 2); ctx.fill();
+ctx.font = '45px sans-serif';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.shadowBlur = 0;
 ctx.fillText(emoji, 0, 0);
-
-ctx.shadowBlur = 5;
-ctx.shadowColor = '#ff1a75';
-ctx.fillStyle = '#ffb3c6';
-ctx.font = 'bold 10px Courier New';
-ctx.fillText(name, 0, -24);
-
+ctx.fillStyle = '#ffffff';
+ctx.font = 'bold 12px Courier New';
+ctx.fillText(name, 0, -32);
 ctx.restore();
 }
 
@@ -488,95 +918,68 @@ function animateBackground() {
 if (currentMode === 'matrix') {
 matrixCounter++;
 if (matrixCounter % 2 === 0) {
-ctx.fillStyle = 'rgba(2, 0, 5, 0.15)';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-ctx.fillStyle = '#ff4d88';
-ctx.font = fontSize + 'px monospace';
-
+ctx.fillStyle = 'rgba(2, 0, 5, 0.15)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = '#ff4d88'; ctx.font = fontSize + 'px monospace';
 for (let i = 0; i < drops.length; i++) {
 const text = characters.charAt(Math.floor(Math.random() * characters.length));
 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-drops[i] = 0;
-}
+if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
 drops[i]++;
 }
+if (Math.random() < 0.3) {
+playCodeTypingSound();
 }
-} else if (currentMode === 'galaxy') {
-ctx.fillStyle = 'rgba(2, 0, 5, 0.22)';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
+}
+} else if (currentMode === 'galaxy' || currentMode === 'balloons') {
+ctx.fillStyle = 'rgba(2, 0, 5, 0.22)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+const centerX = canvas.width / 2; const centerY = canvas.height / 2;
 
 spaceStars.forEach(star => {
 star.alpha += (Math.random() - 0.5) * 0.06;
-if (star.alpha < 0.1) star.alpha = 0.1;
-if (star.alpha > 1) star.alpha = 1;
-
+if (star.alpha < 0.1) star.alpha = 0.1; if (star.alpha > 1) star.alpha = 1;
 ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-ctx.beginPath();
-ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-ctx.fill();
+ctx.beginPath(); ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2); ctx.fill();
 });
 
-if (Math.random() < 0.025) {
-fireworks.push(new Firework3D());
-}
+let fwRate = heavyFireworksActive ? 0.35 : 0.025;
+if (Math.random() < fwRate) { fireworks.push(new Firework3D(heavyFireworksActive)); }
+if (heavyFireworksActive && Math.random() < 0.25) { fireworks.push(new Firework3D(true)); }
+
 fireworks.forEach((fw, index) => {
-fw.update();
-fw.draw();
-if (fw.exploded && fw.particles.length === 0) {
-fireworks.splice(index, 1);
-}
+fw.update(); fw.draw();
+if (fw.exploded && fw.particles.length === 0) { fireworks.splice(index, 1); }
 });
+
+if (currentMode === 'balloons') {
+if (Math.random() < 0.05) { balloons.push(new Balloon()); }
+balloons.forEach((b, index) => {
+b.update(); b.draw();
+if (b.y < -50) balloons.splice(index, 1);
+});
+}
 
 const sunGlow = ctx.createRadialGradient(centerX, centerY, 5, centerX, centerY, 60);
-sunGlow.addColorStop(0, '#ffffff');
-sunGlow.addColorStop(0.3, '#ffcc00');
-sunGlow.addColorStop(0.7, '#ff3300');
-sunGlow.addColorStop(1, 'transparent');
-
-ctx.fillStyle = sunGlow;
-ctx.beginPath();
-ctx.arc(centerX, centerY, 50, 0, Math.PI * 2);
-ctx.fill();
+sunGlow.addColorStop(0, '#ffffff'); sunGlow.addColorStop(0.3, '#ffcc00');
+sunGlow.addColorStop(0.7, '#ff3300'); sunGlow.addColorStop(1, 'transparent');
+ctx.fillStyle = sunGlow; ctx.beginPath(); ctx.arc(centerX, centerY, 50, 0, Math.PI * 2); ctx.fill();
 
 orbits.forEach(orbit => {
-ctx.strokeStyle = 'rgba(255, 179, 198, 0.15)';
-ctx.lineWidth = 1;
-ctx.beginPath();
-ctx.ellipse(centerX, centerY, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
-ctx.stroke();
-
+ctx.strokeStyle = 'rgba(255, 179, 198, 0.15)'; ctx.lineWidth = 1;
+ctx.beginPath(); ctx.ellipse(centerX, centerY, orbit.rx, orbit.ry, 0, 0, Math.PI * 2); ctx.stroke();
 orbit.angle += orbit.speed;
 const px = centerX + Math.cos(orbit.angle) * orbit.rx;
 const py = centerY + Math.sin(orbit.angle) * orbit.ry;
-
-ctx.shadowBlur = 10;
-ctx.shadowColor = orbit.color;
-ctx.fillStyle = orbit.color;
-ctx.beginPath();
-ctx.arc(px, py, orbit.size, 0, Math.PI * 2);
-ctx.fill();
-
+ctx.shadowBlur = 10; ctx.shadowColor = orbit.color; ctx.fillStyle = orbit.color;
+ctx.beginPath(); ctx.arc(px, py, orbit.size, 0, Math.PI * 2); ctx.fill();
 if (orbit.hasRing) {
-ctx.strokeStyle = 'rgba(191, 128, 255, 0.7)';
-ctx.lineWidth = 2;
-ctx.beginPath();
-ctx.ellipse(px, py, orbit.size * 2.2, orbit.size * 0.8, Math.PI / 4, 0, Math.PI * 2);
-ctx.stroke();
+ctx.strokeStyle = 'rgba(191, 128, 255, 0.7)'; ctx.lineWidth = 2;
+ctx.beginPath(); ctx.ellipse(px, py, orbit.size * 2.2, orbit.size * 0.8, Math.PI / 4, 0, Math.PI * 2); ctx.stroke();
 }
 ctx.shadowBlur = 0;
 });
 
-updateBubuDudu();
-drawEmojiCharacter(bubu, "🐼", "BUBU");
-drawEmojiCharacter(dudu, "🐻", "DUDU");
+drawCompanionCharacters();
 }
-
 requestAnimationFrame(animateBackground);
 }
 
@@ -601,23 +1004,55 @@ const photoWishes = [
 ];
 
 function startIntro() {
+initAudio();
+playSound('click');
+
+document.querySelectorAll('.hbd-word').forEach(w => w.classList.remove('show-word'));
+
 showScreen('screen-3');
-setTimeout(() => showScreen('screen-2'), 1000);
-setTimeout(() => showScreen('screen-1'), 2000);
-setTimeout(() => showScreen('screen-happy'), 3000);
-setTimeout(() => showScreen('screen-bday'), 4200);
-setTimeout(() => showScreen('screen-toyou'), 5400);
+playSound('beep');
+speakText("3");
 
 setTimeout(() => {
+showScreen('screen-2');
+playSound('beep');
+speakText("2");
+}, 1000);
+
+setTimeout(() => {
+showScreen('screen-1');
+playSound('beep');
+speakText("1");
+}, 2000);
+
+setTimeout(() => {
+showScreen('screen-hbd');
+let hbdAudio = document.getElementById('hbdAudio');
+hbdAudio.currentTime = 0;
+hbdAudio.volume = 1.0;
+hbdAudio.play().catch(e => console.log("HBD audio play blocked:", e));
+
+setTimeout(() => { document.getElementById('w1').classList.add('show-word'); playSound('click'); }, 300);
+setTimeout(() => { document.getElementById('w2').classList.add('show-word'); playSound('click'); }, 1200);
+
+setTimeout(() => {
+hbdAudio.pause();
+hbdAudio.currentTime = 0;
+
 currentMode = 'galaxy';
 showScreen('screen-bouquet');
 
-setTimeout(() => { document.querySelector('.p1').classList.add('show'); updateWish(0); }, 500);
-setTimeout(() => { document.querySelector('.p2').classList.add('show'); updateWish(1); }, 1200);
-setTimeout(() => { document.querySelector('.p3').classList.add('show'); updateWish(2); }, 1900);
-setTimeout(() => { document.querySelector('.p4').classList.add('show'); updateWish(3); }, 2600);
-setTimeout(() => { document.querySelector('.p5').classList.add('show'); updateWish(4); finalizeWishes(); }, 3300);
-}, 6600);
+let bgMusic = document.getElementById('bgMusic');
+bgMusic.volume = 0.8;
+bgMusic.play().catch(e => console.log("Audio play blocked:", e));
+
+setTimeout(() => { document.querySelector('.p1').classList.add('show'); updateWish(0); playSound('click'); }, 500);
+setTimeout(() => { document.querySelector('.p2').classList.add('show'); updateWish(1); playSound('click'); }, 1200);
+setTimeout(() => { document.querySelector('.p3').classList.add('show'); updateWish(2); playSound('click'); }, 1900);
+setTimeout(() => { document.querySelector('.p4').classList.add('show'); updateWish(3); playSound('click'); }, 2600);
+setTimeout(() => { document.querySelector('.p5').classList.add('show'); finalizeWishes(); playSound('click'); }, 3300);
+}, 3500);
+}, 3000);
 }
 
 function updateWish(index) {
@@ -630,7 +1065,80 @@ document.getElementById('main-wish-box').innerHTML = "✨ Tap any photo above to
 }, 1500);
 }
 
+function goToBouquetScreen() {
+currentMode = 'galaxy';
+showScreen('screen-bouquet');
+let bgMusic = document.getElementById('bgMusic');
+bgMusic.play().catch(e => {});
+}
+
+function goToThirdScreen() {
+let bgMusic = document.getElementById('bgMusic');
+bgMusic.pause();
+showScreen('screen-third');
+
+document.getElementById('cakeContainer').classList.remove('show-cake');
+document.querySelectorAll('.candle').forEach(c => {
+c.classList.remove('planted');
+let f = c.querySelector('.flame');
+let s = c.querySelector('.smoke');
+if(f) f.classList.remove('extinguished');
+if(s) s.classList.remove('smoke-animate');
+});
+document.getElementById('blowBtn').style.display = 'none';
+document.getElementById('cakeText').innerHTML = "Preparing 3D Cake from above... ✨";
+
+setTimeout(() => {
+document.getElementById('cakeContainer').classList.add('show-cake');
+}, 300);
+
+setTimeout(() => {
+document.querySelectorAll('.candle').forEach((c, index) => {
+setTimeout(() => {
+c.classList.add('planted');
+playSound('click');
+}, index * 500);
+});
+}, 1200);
+
+setTimeout(() => {
+document.getElementById('cakeText').innerHTML = "Candles are ready! Tap the wind button to blow 💨";
+document.getElementById('blowBtn').style.display = 'flex';
+}, 3200);
+}
+
+function blowCandles() {
+playSound('blow');
+let wind = document.getElementById('windStream');
+wind.classList.remove('wind-animate');
+void wind.offsetWidth;
+wind.classList.add('wind-animate');
+
+setTimeout(() => {
+document.querySelectorAll('.flame').forEach(f => f.classList.add('extinguished'));
+document.querySelectorAll('.smoke').forEach(s => s.classList.add('smoke-animate'));
+document.getElementById('cakeText').innerHTML = "🎉 Happy Birthday May Phyu Zin! Wishes come true! 💖✨";
+document.getElementById('blowBtn').style.display = 'none';
+
+// မီးရှုးပန်းများကို အရေအတွက်လျော့ကာ လျင်မြန်စွာဖောက်ပြီး ၁.၅ စက္ကန့်အတွင်း အမြန်ဆုံးပြန်ရုတ်သိမ်းစေရန် ပြင်ဆင်ထားသည်
+heavyFireworksActive = true;
+playSound('fireworks-frenzy');
+
+setTimeout(() => {
+heavyFireworksActive = false;
+currentMode = 'balloons';
+playSound('balloon');
+}, 1500);
+
+}, 900);
+}
+
+function goToNextPage() {
+alert("Next page feature coming soon! 🚀✨");
+}
+
 function openLightbox(index) {
+playSound('click');
 const photoItems = document.querySelectorAll('.photo-item');
 const img = photoItems[index].querySelector('img');
 const lightbox = document.getElementById('lightbox');
@@ -645,9 +1153,9 @@ lightbox.style.display = 'flex';
 }
 
 function closeLightbox() {
+playSound('click');
 document.getElementById('lightbox').style.display = 'none';
 }
 </script>
 </body>
 </html>
-
